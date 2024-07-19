@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Depósito eMola e M-Pesa</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #FFD700; /* Amarelo */
+            color: #000000; /* Preto */
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            background: #FFFFFF; /* Branco */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .logo {
+            margin-bottom: 20px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab {
+            padding: 10px 20px;
+            background-color: #FFA500; /* Laranja */
+            color: #FFFFFF; /* Branco */
+            border: none;
+            cursor: pointer;
+            border-radius: 8px 8px 0 0;
+            margin-right: 5px;
+        }
+        .tab.active {
+            background-color: #000000; /* Preto */
+            color: #FFFFFF; /* Branco */
+        }
+        .tab-content {
+            display: none;
+            overflow-y: auto; /* Adicionado para scroll vertical quando necessário */
+            max-height: 400px; /* Altura máxima para o conteúdo */
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .maintenance-msg {
+            color: #FF0000; /* Vermelho */
+            font-style: italic;
+            margin-top: 10px;
+        }
+        .input-field {
+            margin-bottom: 10px;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #4CAF50; /* Verde */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #45a049;
+        }
+        .copy-btn {
+            margin-left: 10px;
+        }
+        .flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .flex-item {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="logo">
+        <img src="https://i.ibb.co/Z6PCmJ6/emola-logo.png" alt="eMola Logo" width="150">
+    </div>
+    <h2>Depósito eMola e M-Pesa</h2>
+
+    <!-- Abas -->
+    <div class="tabs">
+        <button class="tab active" onclick="openTab(event, 'emola')">eMola</button>
+        <button class="tab" onclick="openTab(event, 'mpesa')">M-Pesa (Manutenção)</button>
+    </div>
+
+    <!-- Conteúdo da aba eMola -->
+    <div id="emola" class="tab-content active">
+        <div class="input-field">
+            <label for="valor-emola">Valor:</label>
+            <input type="text" id="valor-emola" placeholder="Digite o valor">
+        </div>
+        <button class="btn" onclick="depositarEmola()">Depositar</button>
+        <div id="emola-instrucoes" style="display: none; margin-top: 10px;">
+            <p>Para concluir o pagamento, envie o valor que escolheu para o número abaixo:</p>
+            <div class="flex-container">
+                <div class="flex-item" style="overflow: hidden;">
+                    <p id="numero-pagamento"><strong>867969698-REMIGIO TOMÁS</strong></p>
+                    <button class="btn copy-btn" onclick="copiarNumeroPagamento()">Copiar Número</button>
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="id-transacao-emola">ID da transação:</label>
+                <input type="text" id="id-transacao-emola" placeholder="Digite o ID da transação">
+            </div>
+            <button class="btn" onclick="confirmarPagamento()">Confirmar Pagamento</button>
+        </div>
+    </div>
+
+    <!-- Conteúdo da aba M-Pesa -->
+    <div id="mpesa" class="tab-content">
+        <p class="maintenance-msg">M-Pesa está em manutenção no momento.</p>
+    </div>
+
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        tablinks = document.getElementsByClassName("tab");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+
+    function depositarEmola() {
+        var valorEmola = document.getElementById('valor-emola').value;
+        var emolaInstrucoes = document.getElementById('emola-instrucoes');
+        emolaInstrucoes.style.display = 'block';
+        emolaInstrucoes.innerHTML = `
+            <p>Para concluir o pagamento, envie o valor que escolheu para o número abaixo:</p>
+            <div class="flex-container">
+                <div class="flex-item" style="overflow: hidden;">
+                    <p id="numero-pagamento"><strong>867969698-REMIGIO TOMÁS</strong></p>
+                    <button class="btn copy-btn" onclick="copiarNumeroPagamento()">Copiar Número</button>
+                </div>
+            </div>
+            <div class="input-field">
+                <label for="id-transacao-emola">ID da transação:</label>
+                <input type="text" id="id-transacao-emola" placeholder="Digite o ID da transação">
+            </div>
+            <button class="btn" onclick="confirmarPagamento()">Confirmar Pagamento</button>
+        `;
+    }
+
+    function copiarNumeroPagamento() {
+        var numeroPagamento = document.getElementById('numero-pagamento').innerText.trim();
+        var tempInput = document.createElement('input');
+        tempInput.value = numeroPagamento;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        alert('Número de pagamento copiado: ' + numeroPagamento);
+    }
+
+    function confirmarPagamento() {
+        var idTransacao = document.getElementById('id-transacao-emola').value;
+        var numeroWhatsApp = '867969698'; // Número de WhatsApp para enviar o ID da transação
+        var mensagem = encodeURIComponent(`ID da transação: ${idTransacao}`);
+
+        window.open(`https://api.whatsapp.com/send?phone=${numeroWhatsApp}&text=${mensagem}`, '_blank');
+    }
+</script>
+
+</body>
+</html>
