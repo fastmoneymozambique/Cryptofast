@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema Preto com Botões</title>
+    <style>
+        body {
+            background-color: #111;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 800px;
+            text-align: center;
+            width: 100%;
+        }
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+        }
+        .plan {
+            background-color: #333;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .plan p {
+            margin: 10px 0;
+        }
+        .button {
+            background-color: #FFD700; /* Amarelo */
+            color: #111; /* Preto */
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: #FFC400; /* Amarelo mais escuro ao passar o mouse */
+        }
+        .warning {
+            background-color: #FF5733; /* Vermelho */
+            color: #fff;
+            padding: 10px;
+            border-radius: 4px;
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="warning" id="aviso">
+        <p>POR FAVOR VERIFIQUE SEU SALDO</p>
+    </div>
+    
+    <div class="container">
+        <h1>Planos de Investimento</h1>
+
+        <div class="plan">
+            <p><strong>Para 500MT:</strong></p>
+            <p>Investimento inicial = 500MT</p>
+            <p>Lucro em 3 horas = 400MT</p>
+            <p>Total após 3 horas = 900MT</p>
+            <button class="button" onclick="mostrarAviso(900)">Investir</button>
+            <p><strong>VALIDADE 3H</strong></p>
+        </div>
+
+        <div class="plan">
+            <p><strong>Para 1000MT:</strong></p>
+            <p>Investimento inicial = 1000MT</p>
+            <p>Lucro em 3 horas = 800MT</p>
+            <p>Total após 3 horas = 1800MT</p>
+            <button class="button" onclick="mostrarAviso(1800)">Investir</button>
+            <p><strong>VALIDADE 3H</strong></p>
+        </div>
+
+        <div class="plan">
+            <p><strong>Para 5000MT:</strong></p>
+            <p>Investimento inicial = 5000MT</p>
+            <p>Lucro em 3 horas = 4000MT</p>
+            <p>Total após 3 horas = 9000MT</p>
+            <button class="button" onclick="mostrarAviso(9000)">Investir</button>
+            <p><strong>VALIDADE 3H</strong></p>
+        </div>
+
+        <div class="plan">
+            <p><strong>Para 10000MT:</strong></p>
+            <p>Investimento inicial = 10000MT</p>
+            <p>Lucro em 3 horas = 8000MT</p>
+            <p>Total após 3 horas = 18000MT</p>
+            <button class="button" onclick="mostrarAviso(18000)">Investir</button>
+            <p><strong>VALIDADE 3H</strong></p>
+        </div>
+
+        <div class="plan">
+            <p><strong>Para 30000MT:</strong></p>
+            <p>Investimento inicial = 30000MT</p>
+            <p>Lucro em 3 horas = 24000MT</p>
+            <p>Total após 3 horas = 54000MT</p>
+            <button class="button" onclick="mostrarAviso(54000)">Investir</button>
+            <p><strong>VALIDADE 3H</strong></p>
+        </div>
+
+        <div class="plan">
+            <p><strong>Para 60000MT:</strong></p>
+            <p>Investimento inicial = 60000MT</p>
+            <p>Lucro em 3 horas = 48000MT</p>
+            <p>Total após 3 horas = 108000MT</p>
+            <button class="button" onclick="mostrarAviso(108000)">Investir</button>
+            <p><strong>VALIDADE 3H</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function mostrarAviso(total) {
+            var aviso = document.getElementById('aviso');
+            aviso.style.display = 'block';
+            setTimeout(function() {
+                aviso.style.display = 'none';
+            }, 3000); // Oculta o aviso após 3 segundos (3000 milissegundos)
+
+            // Aqui você pode adicionar a lógica para verificar o saldo ou realizar outras operações
+            // Exemplo: console.log('Investindo ' + total + ' MT');
+        }
+    </script>
+</body>
+</html>
