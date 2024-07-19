@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resumo de Investimentos</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="top-bar">
+        <div class="id-section">
+            <h3>ID de Usuário</h3>
+            <p id="user-id">Carregando...</p>
+        </div>
+        <div class="buttons">
+            <button id="btn-depositar">Fazer Depósito</button>
+            <button id="btn-sacar">Sacar</button>
+            <button id="btn-ver-planos">Ver Planos de Investimentos</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="section">
+            <h2>Saldo</h2>
+            <div class="box">
+                <p id="saldo">0.00MT</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Lucro e Valor Investido até Agora</h2>
+            <div class="box">
+                <p id="lucro">0.00MT</p>
+                <p id="investido">0.00MT</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>Depósitos</h2>
+            <div class="box">
+                <p id="depositado">0.00MT</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="animations" id="animations"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
